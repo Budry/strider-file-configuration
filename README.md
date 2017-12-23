@@ -27,4 +27,4 @@ phases:
 Format of your scripts is same as in [Strider-CD/strider-custom](https://github.com/Strider-CD/strider-custom)
 plugin and you same logic for processing your input.
 
-3. You can configure `environments` phase in plugin configuration page
+3. You can configure `environments` phase in plugin configuration page or name of configuration file
