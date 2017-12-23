@@ -1,6 +1,6 @@
 {
   "name": "strider-file-configuration",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Added support for build configuration via .strider.yml file in project repository",
   "main": "index.js",
   "scripts": {
