@@ -1,0 +1,50 @@
+{
+  "name": "strider-file-configuration",
+  "version": "0.0.1",
+  "description": "Added support for build configuration via .strider.yml file in project repository",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint *.js",
+    "test": "npm run lint && istanbul cover node_modules/mocha/bin/_mocha -- --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Budry/strider-file-configuration"
+  },
+  "keywords": [
+    "strider",
+    "custom scripts",
+    "file configuration"
+  ],
+  "engines": {
+    "node": ">=4.2"
+  },
+  "author": "Ondřej Zráuba <info@zaruba-ondrej.cz> (https://zaruba-ondrej.cz)",
+  "contributors": [
+    "Ondřej Zráuba <info@zaruba-ondrej.cz> (https://zaruba-ondrej.cz)",
+    "Niall O'Higgins"
+  ],
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "debug": "^2.2.0",
+    "ejs": "^1.0.0",
+    "gitane": "~0.3.1",
+    "istanbul": "^0.4.4",
+    "js-yaml": "^3.10.0"
+  },
+  "strider": {
+    "id": "file-config",
+    "type": "job",
+    "icon": "icon.png",
+    "title": "File configuration",
+    "worker": "worker.js",
+    "webapp": "webapp.js",
+    "config": true
+  },
+  "devDependencies": {
+    "chai": "~1.8.1",
+    "eslint": "^3.1.1",
+    "mocha": "~1.14.0"
+  }
+}
