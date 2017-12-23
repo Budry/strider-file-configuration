@@ -1,36 +1,23 @@
 
-app.controller('CustomCtrl', ['$scope', function ($scope) {
+const app = window.app;
+const configDefaults = {
+  environment: '# Hi from `environment`',
+  filename: '.strider.yml'
+};
 
-  function save(url, scripts, done) {
-    $.ajax({
-      url: '/custom/script',
-      type: 'POST',
-      data: {url: url, scripts: scripts},
-      dataType: 'json',
-      success: function (data, ts, xhr) {
-        done(null);
-      },
-      error: function (xhr, ts, e) {
-        if (xhr && xhr.responseText) {
-          var data = $.parseJSON(xhr.responseText);
-          e = data.errors[0];
-        }
-        done(e);
-      }
-    });
-  }
+app.controller('FileConfigurationController', ['$scope', function ($scope) {
 
-  $scope.scripts = $scope.panelData.custom;
+  $scope.saving = false;
+
+  $scope.$watch('configs[branch.name].file_configuration.config', function (value) {
+    $scope.config = value || configDefaults;
+  });
+
   $scope.save = function () {
     $scope.saving = true;
-    save($scope.repo.url, $scope.scripts, function (err) {
+    $scope.pluginConfig('file_configuration', $scope.config, function () {
+      $scope.success('Saved custom scripts');
       $scope.saving = false;
-      if (err) {
-        $scope.error(err);
-      } else {
-        $scope.success('Saved custom scripts');
-      }
-      $scope.$root.$digest();
     });
   };
 

@@ -34,13 +34,15 @@
     "js-yaml": "^3.10.0"
   },
   "strider": {
-    "id": "file-config",
+    "id": "file_configuration",
     "type": "job",
     "icon": "icon.png",
     "title": "File configuration",
     "worker": "worker.js",
     "webapp": "webapp.js",
-    "config": true
+    "config": {
+      "controller": "FileConfigurationController"
+    }
   },
   "devDependencies": {
     "chai": "~1.8.1",

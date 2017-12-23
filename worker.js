@@ -9,14 +9,16 @@ var yaml = require('js-yaml');
 module.exports = {
   init: function (config, job, context, done) {
     try {
-      config = config || {};
+      config = config || {
+        filename: '.strider.yml'
+      };
 
       var result = {
         environment: shellCommand(config.environment, config.shell, job),
-        prepare: processConfigFile(config.shell, job),
-        test: processConfigFile(config.shell, job),
-        deploy: processConfigFile(config.shell, job),
-        cleanup: processConfigFile(config.shell, job)
+        prepare: processConfigFile(config.filename, config.shell, job),
+        test: processConfigFile(config.filename, config.shell, job),
+        deploy: processConfigFile(config.filename, config.shell, job),
+        cleanup: processConfigFile(config.filename, config.shell, job)
       };
 
       done(null, result);
@@ -27,11 +29,11 @@ module.exports = {
   }
 };
 
-function processConfigFile(shell, job) {
+function processConfigFile(filename, shell, job) {
 
   return function (context, cb) {
 
-    var file_path = path.join(context.dataDir, '.strider.yml');
+    var file_path = path.join(context.dataDir, filename);
     var file_content = fs.readFileSync(file_path, 'utf8');
 
     var file_configuration = yaml.safeLoad(file_content);

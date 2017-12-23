@@ -2,9 +2,10 @@
 
 module.exports = {
   config: {
-    custom: {
+    file_configuration: {
       shell: {type: String, default: 'Default', enum: ['Default Shell', 'Bash', 'Powershell']},
-      environment: {type: String, default: '# type shell commands here'}
+      environment: {type: String, default: '# type shell commands here'},
+      filename: {type: String, default: '.strider.yml'}
     }
   }
 };
